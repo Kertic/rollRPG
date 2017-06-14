@@ -112,7 +112,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Library of stuff\DynArray.cs" />
-    <Compile Include="Assets\Scripts\Testingscript.cs" />
+    <Compile Include="Assets\Scripts\Managers\ButtonManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\GlobalVar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
