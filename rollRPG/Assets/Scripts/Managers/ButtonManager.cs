@@ -26,7 +26,7 @@ public class ButtonManager : MonoBehaviour {
     /// Returns an array of the 4 buttons in order of 1,2,3,4
     /// </summary>
     /// <returns></returns>
-    Button[] GetButtons()
+    public Button[] GetButtons()
     {
         Button[] temp = { menuButton1, menuButton2, menuButton3, menuButton4 };
         return temp;

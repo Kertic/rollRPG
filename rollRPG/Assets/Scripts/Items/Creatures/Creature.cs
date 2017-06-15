@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Creature  {
+public class Creature : Item  {
 
     #region Resources
     float currentHP;
@@ -36,5 +36,10 @@ public class Creature  {
         ARMOR,
         NUMOFSTATS
 
+    }
+
+    public override void Interact()
+    {
+        //A creature does nothing by default
     }
 }

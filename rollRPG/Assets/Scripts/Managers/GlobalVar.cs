@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GlobalVar {
+public static class GlobalVar
+{
+
+   public static Player mainPlayer;//The protagonist
+    
 
     /// <summary>
     /// This will roll a dice with (numOfSides) sides, and return the result
@@ -13,4 +17,6 @@ public static class GlobalVar {
     {
         return (int)((Random.value * 100) % numOfSides) + 1;
     }
+
+
 }
