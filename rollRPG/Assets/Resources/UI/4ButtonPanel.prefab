@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 224932392844745756}
   - component: {fileID: 222753110036124670}
   - component: {fileID: 114353837294064040}
+  - component: {fileID: 114973229326217652}
   m_Layer: 5
   m_Name: 4ButtonPanel
   m_TagString: Untagged
@@ -730,6 +731,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Top Left
+--- !u!114 &114973229326217652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1765116140379398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5dcb432c3bb5194e9b3d161f1a03101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuButton1: {fileID: 114788020309620130}
+  menuButton2: {fileID: 114623028187376364}
+  menuButton3: {fileID: 114830670137003062}
+  menuButton4: {fileID: 114372848868566944}
 --- !u!114 &114985159910702992
 MonoBehaviour:
   m_ObjectHideFlags: 1

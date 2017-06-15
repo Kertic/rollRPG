@@ -67,3 +67,7 @@ Temporary Items
 
 Library
 ProjectSettings
+*.csproj
+*.csproj
+*.csproj
+*.sln
