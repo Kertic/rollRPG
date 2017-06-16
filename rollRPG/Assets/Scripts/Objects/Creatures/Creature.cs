@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Creature : RoomObject
 {
+    
 
     #region Constructors
-    public Creature()
-    {
-        maxHP = 12;
-        currentHP = maxHP;
-        InsertStats(10, 10, 10, 10, 10, 10);
 
-    }
     #endregion
 
     #region Resources
@@ -51,20 +46,19 @@ public class Creature : RoomObject
 
     #region Inventory
     DynArray<Item> itemsInInventory;
-    Weapon MainHand;
-    Weapon Offhand;
+    Weapon EquippedWeapon;
+
     //Armor will go here
     public enum EquipmentSlots
     {
-        MAINHAND,
-        OFFHAND,
+        WEAPON,
         ARMOR,
         NUMOFEQUIPSLOTS
     }
     #endregion
 
 
-    private void Start()
+    public virtual void Start()
     {
         if (Strength > Dexterity)
         {
@@ -105,6 +99,8 @@ public class Creature : RoomObject
             case STATS.CHA:
                 return (Charisma / 2) - 5;
 
+            case STATS.ARMOR:
+                return Armor;
 
             default:
                 return 0;
@@ -121,6 +117,8 @@ public class Creature : RoomObject
         Intelligence = inInt;
         Wisdom = inWis;
         Charisma = inCha;
+
+
     }
 
     #endregion
@@ -151,22 +149,31 @@ public class Creature : RoomObject
         {
             currentHP -= incomingDamage;
         }
+
+       GlobalVar.DiscriptionText.text += "\n" + this.name + " took " + incomingDamage + " damage.";
     }
 
-    public void AttackMainHand(Creature creatureToAttack)
+    public void Attack(Creature creatureToAttack)
     {
-
+        GlobalVar.DiscriptionText.text = "";
         int attackRoll = GlobalVar.Roll(20) + GetModifier(STATS.STR);//This last part should change depending on what kind of weapon
-
+        GlobalVar.DiscriptionText.text += "\nYou rolled a " + attackRoll + " vs an armor class of " + creatureToAttack.GetModifier(STATS.ARMOR);
         bool didWeHit = creatureToAttack.GetAttacked(attackRoll);
         //If it succeeds, call our weapons successful attack script which will return damage dealt, 
         if (didWeHit)
         {
-            creatureToAttack.TakeDamage(MainHand.DealDamage());
+           
+            creatureToAttack.TakeDamage(EquippedWeapon.DealDamage());
+        }
+        else
+        {
+            GlobalVar.DiscriptionText.text += "\nYou missed";
         }
 
-        //Else, say it missed
+        
     }
+
+
 
     #endregion
 
@@ -179,18 +186,13 @@ public class Creature : RoomObject
     {
         switch (SlotToEquipIn)
         {
-            case EquipmentSlots.MAINHAND:
+            case EquipmentSlots.WEAPON:
                 if (ItemToEquip.GetType() == typeof(Weapon))
                 {
-                    MainHand = (Weapon)ItemToEquip;
+                    EquippedWeapon = (Weapon)ItemToEquip;
                 }
                 break;
-            case EquipmentSlots.OFFHAND:
-                if (ItemToEquip.GetType() == typeof(Weapon))
-                {
-                    Offhand = (Weapon)ItemToEquip;
-                }
-                break;
+
             case EquipmentSlots.ARMOR:
                 break;
             case EquipmentSlots.NUMOFEQUIPSLOTS:

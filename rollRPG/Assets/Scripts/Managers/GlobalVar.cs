@@ -7,6 +7,7 @@ public static class GlobalVar
 
     public static Player mainPlayer;//The protagonist
     public static Room currentRoom;
+    public static UnityEngine.UI.Text DiscriptionText;
 
 
     /// <summary>
