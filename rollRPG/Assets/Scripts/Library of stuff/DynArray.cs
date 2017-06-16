@@ -128,4 +128,17 @@ public class DynArray<Type>
         return temp;
     }
 
+    //This overrides the brackets so we can do that instead of GetCopyOfArray for everything.
+    public Type this[int key]
+    {
+        get
+        {
+            return mArray[key];
+        }
+        set
+        {
+            mArray[key] = value; 
+        }
+    }
+
 }

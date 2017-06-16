@@ -22,7 +22,7 @@ public static class GlobalVar
     }
 
 
-    #region DiscriptionText interaction
+    #region Discription box interaction
 
     /// <summary>
     /// This function will take the text inside of DiscriptionText and format it to fit within the text box

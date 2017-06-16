@@ -164,7 +164,7 @@ public class Creature : RoomObject
         {
             int damageDealt = EquippedWeapon.DealDamage();
             creatureToAttack.TakeDamage(damageDealt);
-            stringToWriteToDiscription += "\n" + this.name + " took " + damageDealt + " damage.";
+            stringToWriteToDiscription += "\n" + creatureToAttack.name + " took " + damageDealt + " damage.";
         }
         else
         {
