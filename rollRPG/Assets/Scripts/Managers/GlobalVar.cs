@@ -8,6 +8,7 @@ public static class GlobalVar
     public static Player mainPlayer;//The protagonist
     public static Room currentRoom;
     public static UnityEngine.UI.Text DiscriptionText;
+    public static GameObject managementObject;
 
 
     /// <summary>
@@ -51,6 +52,8 @@ public static class GlobalVar
         {
             DiscriptionText.fontSize = 30;
         }
+        managementObject.GetComponent<MonoBehaviour>().StopCoroutine(TypewriterText());
+        managementObject.GetComponent<MonoBehaviour>().StartCoroutine(TypewriterText());
     }
 
     /// <summary>
@@ -71,9 +74,38 @@ public static class GlobalVar
     /// <summary>
     /// This will take the text inside of DiscriptionText and write it out one character at a time. This is normally only called during FormatText(), after the text size has been made.
     /// </summary>
-    public static void TypewriterText()
+    static IEnumerator TypewriterText()
     {
+        float TimeToWrite = 0.8f;
+        string TextToType = DiscriptionText.text;
+        DiscriptionText.text = "";
 
+        for (int i = 0; i < TextToType.Length; i++)
+        {
+            Debug.Log("Adding : " + TextToType[i] + " : to the string");
+            DiscriptionText.text += TextToType[i];
+            yield return new WaitForSeconds(TimeToWrite / TextToType.Length);
+        }
+        
+
+
+        // float currentTime = 0.0f;
+        // for (int i = 0; i < TextToType.Length; i++)
+        // {
+        //     
+        //     currentTime += Time.frameCount;
+        //     Debug.Log("current time is: " + currentTime);
+        //     if (currentTime >= 1.1 / TextToType.Length)
+        //     {
+        //         DiscriptionText.text += TextToType[i];
+        //         currentTime = 0;
+        //     }
+        //     else
+        //     {
+        //         --i;
+        //     }
+        //     
+        // }
     }
     #endregion
 

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    //This is the discription text, we need it for initializing into the GlobalVar.
+    
     [SerializeField]
-    UnityEngine.UI.Text DiscriptionTextbox;
+    UnityEngine.UI.Text DiscriptionTextbox;//This is the discription text, we need it for initializing into the GlobalVar.
+
+    [SerializeField]
+    GameObject theGameManagerObject;
 
 
 
@@ -25,6 +28,6 @@ public class GameManager : MonoBehaviour {
     {
         GlobalVar.DiscriptionText = this.DiscriptionTextbox;
 
-        
+        GlobalVar.managementObject = theGameManagerObject;
     }
 }

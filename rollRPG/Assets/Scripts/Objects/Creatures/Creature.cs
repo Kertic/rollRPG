@@ -150,26 +150,27 @@ public class Creature : RoomObject
             currentHP -= incomingDamage;
         }
 
-       GlobalVar.FormatText( "\n" + this.name + " took " + incomingDamage + " damage.", false);
+       
     }
 
     public void Attack(Creature creatureToAttack)
     {
-        
+        string stringToWriteToDiscription = "";
         int attackRoll = GlobalVar.Roll(20) + GetModifier(STATS.STR);//This last part should change depending on what kind of weapon
-        GlobalVar.FormatText("\nYou rolled a " + attackRoll + " vs an armor class of " + creatureToAttack.GetModifier(STATS.ARMOR), true);
+        stringToWriteToDiscription += "\nYou rolled a " + attackRoll + " vs an armor class of " + creatureToAttack.GetModifier(STATS.ARMOR);
         bool didWeHit = creatureToAttack.GetAttacked(attackRoll);
         //If it succeeds, call our weapons successful attack script which will return damage dealt, 
         if (didWeHit)
         {
-           
-            creatureToAttack.TakeDamage(EquippedWeapon.DealDamage());
+            int damageDealt = EquippedWeapon.DealDamage();
+            creatureToAttack.TakeDamage(damageDealt);
+            stringToWriteToDiscription += "\n" + this.name + " took " + damageDealt + " damage.";
         }
         else
         {
-            GlobalVar.FormatText("\nYou missed", false);
+            stringToWriteToDiscription += "\nYou missed";
         }
-
+        GlobalVar.FormatText(stringToWriteToDiscription, true);
         
     }
 
