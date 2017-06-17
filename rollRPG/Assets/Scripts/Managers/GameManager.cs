@@ -17,6 +17,18 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         InitializeGameVars();
+
+        //STICKYNOTE: This is for testing out the room functionality, delete this and make a better version after
+        
+
+        DynArray<RoomObject> objectsToExport = new DynArray<RoomObject>();
+        GameObject goobyObject = (GameObject)Instantiate(Resources.Load("Prefabs/Gooby"));
+        Enemy goobyEnemy = goobyObject.GetComponent<Enemy>();
+        objectsToExport.AddToArray(goobyEnemy);
+
+        GlobalVar.currentRoom.PopulateObjectsInRoom(objectsToExport);
+
+
 	}
 	
 	// Update is called once per frame

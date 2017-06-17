@@ -11,7 +11,8 @@ using UnityEngine.Serialization;
 
 
 public abstract class RoomObject : MonoBehaviour {
-
+    [SerializeField]
+    public string ButtonText;
     public abstract void Interact();
      
 	

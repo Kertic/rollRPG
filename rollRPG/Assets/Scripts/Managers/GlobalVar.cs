@@ -10,6 +10,8 @@ public static class GlobalVar
     public static UnityEngine.UI.Text DiscriptionText;
     public static GameObject managementObject;
 
+    
+
 
     /// <summary>
     /// This will roll a dice with (numOfSides) sides, and return the result
@@ -76,36 +78,39 @@ public static class GlobalVar
     /// </summary>
     static IEnumerator TypewriterText()
     {
+
+        #region Disable buttons
+        GameObject buttonPanelObject = GameObject.FindGameObjectsWithTag("ButtonPanel")[0];
+        ButtonManager buttonPanel = buttonPanelObject.GetComponent<ButtonManager>();
+        UnityEngine.UI.Button[] buttons = buttonPanel.GetButtons();
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].enabled = false;
+        }
+        #endregion
+
+
         float TimeToWrite = 0.8f;
         string TextToType = DiscriptionText.text;
         DiscriptionText.text = "";
 
         for (int i = 0; i < TextToType.Length; i++)
         {
-            Debug.Log("Adding : " + TextToType[i] + " : to the string");
+            
             DiscriptionText.text += TextToType[i];
             yield return new WaitForSeconds(TimeToWrite / TextToType.Length);
         }
+
+
+
+        #region Enable buttons
         
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].enabled = true;
+        }
+        #endregion
 
-
-        // float currentTime = 0.0f;
-        // for (int i = 0; i < TextToType.Length; i++)
-        // {
-        //     
-        //     currentTime += Time.frameCount;
-        //     Debug.Log("current time is: " + currentTime);
-        //     if (currentTime >= 1.1 / TextToType.Length)
-        //     {
-        //         DiscriptionText.text += TextToType[i];
-        //         currentTime = 0;
-        //     }
-        //     else
-        //     {
-        //         --i;
-        //     }
-        //     
-        // }
     }
     #endregion
 

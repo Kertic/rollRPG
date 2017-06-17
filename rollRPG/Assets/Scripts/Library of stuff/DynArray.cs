@@ -1,7 +1,9 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class DynArray<Type>
 {
     int mSize;
@@ -139,6 +141,11 @@ public class DynArray<Type>
         {
             mArray[key] = value; 
         }
+    }
+
+    public int GetSize()
+    {
+        return mSize;
     }
 
 }
