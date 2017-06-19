@@ -15,8 +15,7 @@ public class Room : MonoBehaviour {
 	void Start () {
         objectsInRoom = new DynArray<RoomObject>();
 
-        //STICKYNOTE: This is bad code, we will make something to innitialize better later on.
-        GlobalVar.currentRoom = this;
+        
 	}
 	
 	// Update is called once per frame
@@ -26,6 +25,11 @@ public class Room : MonoBehaviour {
 
     public void PopulateObjectsInRoom(DynArray<RoomObject> objectsToPopulateWith)
     {
+        if (objectsInRoom == null)
+        {
+            objectsInRoom = new DynArray<RoomObject>();
+        }
+
         for (int i = 0; i < objectsToPopulateWith.GetSize(); i++)
         {
             objectsInRoom.AddToArray(objectsToPopulateWith[i]);

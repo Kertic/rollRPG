@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     GameObject theGameManagerObject;
 
-
+    [SerializeField]
+    Room startingRoom;
 
 
 	// Use this for initialization
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour {
         GameObject goobyObject = (GameObject)Instantiate(Resources.Load("Prefabs/Gooby"));
         Enemy goobyEnemy = goobyObject.GetComponent<Enemy>();
         objectsToExport.AddToArray(goobyEnemy);
-
+        
         GlobalVar.currentRoom.PopulateObjectsInRoom(objectsToExport);
 
 
@@ -41,5 +42,7 @@ public class GameManager : MonoBehaviour {
         GlobalVar.DiscriptionText = this.DiscriptionTextbox;
 
         GlobalVar.managementObject = theGameManagerObject;
+
+        GlobalVar.currentRoom = startingRoom;
     }
 }

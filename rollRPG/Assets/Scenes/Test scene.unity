@@ -372,7 +372,7 @@ Prefab:
     - target: {fileID: 224437491622932620, guid: 1a9c5cd914007d94cb9edbb62f2d56b1,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -422
+      value: -422.00003
       objectReference: {fileID: 0}
     - target: {fileID: 224437491622932620, guid: 1a9c5cd914007d94cb9edbb62f2d56b1,
         type: 2}
@@ -402,7 +402,7 @@ Prefab:
     - target: {fileID: 224528186135069636, guid: 1a9c5cd914007d94cb9edbb62f2d56b1,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -422
+      value: -422.00003
       objectReference: {fileID: 0}
     - target: {fileID: 224528186135069636, guid: 1a9c5cd914007d94cb9edbb62f2d56b1,
         type: 2}
@@ -619,6 +619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DiscriptionTextbox: {fileID: 531225167}
   theGameManagerObject: {fileID: 1003791474}
+  startingRoom: {fileID: 2027214481}
 --- !u!1 &1408245991
 GameObject:
   m_ObjectHideFlags: 0
